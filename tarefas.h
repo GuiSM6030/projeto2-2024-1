@@ -1,7 +1,8 @@
+#define TOTAL 100
 #define TAM_CATEGORIA 100
 #define TAM_DESCRICAO 300
 #define NOME_ARQUIVO "tarefas.txt"
-#define NOME_ARQUIVO_BINARIO
+#define NOME_ARQUIVO_BINARIO "tarefas.bin"
 
 typedef struct {
     int prioridade;

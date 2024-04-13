@@ -33,11 +33,11 @@ ERROS deletar(Tarefa tarefas[], int *pos){
     if(pos_deletar >= *pos || pos_deletar < 0)
         return NAO_ENCONTRADO;
 
-    for(int i = pos_deletar; i < *pos; i++){
-        tarefas[i].prioridade = tarefas[i+1].prioridade;
-        strcpy(tarefas[i].categoria, tarefas[i+1].categoria);
-        strcpy(tarefas[i].descricao,  tarefas[i+1].descricao);
-    }
+      for(int i = pos_deletar; i < *pos - 1; i++){ 
+      tarefas[i].prioridade = tarefas[i+1].prioridade;
+      strcpy(tarefas[i].categoria, tarefas[i+1].categoria);
+      strcpy(tarefas[i].descricao,  tarefas[i+1].descricao);
+  }
 
     *pos = *pos - 1;
 
