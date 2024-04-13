@@ -42,6 +42,7 @@ ERROS deletar(Tarefa tarefas[], int *pos){
     
     int pos_deletar;
     printf("Entre com a posicao da tarefa a ser deletada: ");
+  
   if (scanf("%d", &pos_deletar) != 1) { 
       printf("Erro na leitura da posição\n");
       return LER; 
@@ -137,7 +138,7 @@ ERROS listar_por_categoria(Tarefa tarefas[], int *pos){
         }
     }
 
-    if (!encontrou_tarefa) {
+    if (encontrou_tarefa == 0) {
         printf("Nenhuma tarefa encontrada para a categoria especificada\n");
         return NAO_ENCONTRADO;
     }
