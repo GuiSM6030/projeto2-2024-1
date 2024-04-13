@@ -3,11 +3,11 @@
 #include "tarefas.h"
 
 int main(){
-  funcao fs[] = {criar, deletar, listar, listar_por_categoria, carregar, exportar, salvar_binario, carregar_binario};
+  funcao fs[] = {criar, deletar, listar_por_categoria, salvar_binario, exportar, carregar_binario, salvar};
 
     Tarefa tarefas[TOTAL];
     int pos;
-    ERROS erro = fs[1](tarefas, &pos);
+    ERROS erro = fs[6](tarefas, &pos);
     if(erro != OK)
         pos = 0;
 
@@ -16,34 +16,36 @@ int main(){
         printf("\nMenu principal\n");
         printf("1 - Criar tarefa\n");
         printf("2 - Deletar tarefa\n");
-        printf("3 - Listar tarefas\n");
-        printf("4 - Listar tarefas por categoria\n");
+        printf("3 - Listar tarefas por categoria\n");
+        printf("4 - Salvar tarefas em arquivo binário\n");
         printf("5 - Exportar tarefas para arquivo de texto\n");
-        printf("6 - Salvar tarefas em arquivo binário\n"); 
-        printf("7 - Carregar tarefas de arquivo binário\n");
+        printf("6 - Carregar tarefas de arquivo binário\n");
         printf("0 - Sair\n");
         printf("Escolha uma opcao: ");
 
-      if (scanf("%d", &opcao) != 1) { 
+      if (scanf("%d", &opcao) > 5) { 
           printf("Erro na leitura da opção\n");
-          exit(1); 
+          exit(0); 
       }
+
+      opcao --;
       
-        opcao--;
-      
-      if(opcao > 7 || opcao < 0)
+      if(opcao > 5)
           printf("Opcao invalida\n");
+        
       else if(opcao == 0)
           fs[opcao](tarefas, &pos);
+        
       else if(opcao > 0)
           fs[opcao](tarefas, &pos);
+        
       else {
           printf("Saindo...\n");
-          fs[3](tarefas, &pos); 
+          fs[6](tarefas, &pos); 
           exit(0);
       }
     } while(opcao >= 0);
 
-    fs[3](tarefas, &pos);
+    fs[6](tarefas, &pos);
 }
 
