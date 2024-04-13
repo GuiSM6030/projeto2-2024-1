@@ -1,7 +1,8 @@
+#define TOTAL 100
 #define TAM_CATEGORIA 100
 #define TAM_DESCRICAO 300
 #define NOME_ARQUIVO "tarefas.txt"
-#define NOME_ARQUIVO_BINARIO
+#define NOME_ARQUIVO_BINARIO "tarefas.bin"
 
 typedef struct {
     int prioridade;
@@ -19,6 +20,9 @@ ERROS listar(Tarefa tarefas[], int *pos);
 ERROS salvar(Tarefa tarefas[], int *pos);
 ERROS carregar(Tarefa tarefas[], int *pos);
 ERROS listar_por_categoria(Tarefa tarefas[], int *pos);
+ERROS exportar(Tarefa tarefas[], int *pos);
+ERROS salvar_binario(Tarefa tarefas[], int *pos);
+ERROS carregar_binario(Tarefa tarefas[], int *pos);
 
 void clearBuffer();
 
