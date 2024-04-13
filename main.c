@@ -3,11 +3,11 @@
 #include "tarefas.h"
 
 int main(){
-    funcao fs[] = {criar, deletar, listar, salvar, carregar};
+  funcao fs[] = {criar, deletar, listar, listar_por_categoria, carregar, exportar, salvar_binario, carregar_binario};
 
     Tarefa tarefas[TOTAL];
     int pos;
-    ERROS erro = fs[4](tarefas, &pos);
+    ERROS erro = fs[1](tarefas, &pos);
     if(erro != OK)
         pos = 0;
 
@@ -28,11 +28,10 @@ int main(){
           printf("Erro na leitura da opção\n");
           exit(1); 
       }
-
       
         opcao--;
       
-      if(opcao > 4 || opcao < 0)
+      if(opcao > 7 || opcao < 0)
           printf("Opcao invalida\n");
       else if(opcao == 0)
           fs[opcao](tarefas, &pos);
