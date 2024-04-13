@@ -6,30 +6,44 @@ ERROS criar(Tarefa tarefas[], int *pos){
     if(*pos >= TOTAL)
         return MAX_TAREFA;
 
-    printf("Entre com a prioridade: ");
-    scanf("%d", &tarefas[*pos].prioridade);
-    clearBuffer();
-    printf("Entre com a categoria: ");
-    fgets(tarefas[*pos].categoria, 100, stdin);
-    tarefas[*pos].categoria[strcspn(tarefas[*pos].categoria, "\n")] = '\0';
-    printf("Entre com a descricao: ");
-    fgets(tarefas[*pos].descricao, 300, stdin);
-    tarefas[*pos].descricao[strcspn(tarefas[*pos].descricao, "\n")] = '\0';
-    *pos = *pos + 1;
+  printf("Entre com a prioridade: ");
+      if (scanf("%d", &tarefas[*pos].prioridade) != 1) { 
+          printf("Erro na leitura da prioridade\n");
+          return LER; 
+      }
+      clearBuffer();
 
-    return OK;
-}
+      printf("Entre com a categoria: ");
+      if (fgets(tarefas[*pos].categoria, 100, stdin) == NULL) { 
+          printf("Erro na leitura da categoria\n");
+          return LER; 
+      }
+      tarefas[pos].categoria[strcspn(tarefas[pos].categoria, "\n")] = '\0';
+
+      printf("Entre com a descricao: ");
+      if (fgets(tarefas[*pos].descricao, 300, stdin) == NULL) { 
+          printf("Erro na leitura da descricao\n");
+          return LER; 
+      }
+      tarefas[pos].descricao[strcspn(tarefas[pos].descricao, "\n")] = '\0';
+      pos = pos + 1;
+
+      return OK;
+  }
 
 ERROS deletar(Tarefa tarefas[], int *pos){
-    // teste se existem tarefas
+    
     if(*pos == 0)
         return SEM_TAREFAS;
 
-    // verifica se a tarefa escolhida existe
+    
     int pos_deletar;
     printf("Entre com a posicao da tarefa a ser deletada: ");
-    scanf("%d", &pos_deletar);
-    pos_deletar--; // garantir posicao certa no array
+  if (scanf("%d", &pos_deletar) != 1) { 
+      printf("Erro na leitura da posição\n");
+      return LER; /
+  }
+    pos_deletar--; 
     if(pos_deletar >= *pos || pos_deletar < 0)
         return NAO_ENCONTRADO;
 

@@ -24,7 +24,11 @@ int main(){
         printf("0 - Sair\n");
         printf("Escolha uma opcao: ");
 
-        scanf("%d", &opcao);
+      if (scanf("%d", &opcao) != 1) { 
+          printf("Erro na leitura da opção\n");
+          exit(1); 
+      }
+
       
         opcao--;
       
